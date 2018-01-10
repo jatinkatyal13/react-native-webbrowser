@@ -1,15 +1,12 @@
 'use strict';
 
-import React from 'react-native';
-var {
-    TextInput,
-    View,
-    } = React;
+import React, { Component } from 'react'
+import { TextInput, View } from 'react-native'
+import PropTypes from 'prop-types'
 
-import BaseComponent from './BaseComponent'
 import styles from './styles'
 
-class StatusBar extends BaseComponent {
+class StatusBar extends Component {
 
     constructor(props) {
         super(props);
@@ -42,8 +39,8 @@ class StatusBar extends BaseComponent {
 }
 
 StatusBar.propTypes = {
-    status: React.PropTypes.string,
-    foregroundColor: React.PropTypes.string
+    status: PropTypes.string,
+    foregroundColor: PropTypes.string
 };
 
 StatusBar.defaultProps = {

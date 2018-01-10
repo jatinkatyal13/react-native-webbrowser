@@ -1,17 +1,16 @@
 'use strict';
 
-var React = require('react-native');
-var {
+import React, { Component } from 'react'
+import {
     View,
     TouchableOpacity,
     StyleSheet,
-    PropTypes,
     ActivityIndicatorIOS,
     ProgressBarAndroid,
     TouchableNativeFeedback,
-    Platform,
-    Component
-    } = React;
+    Platform
+} from 'react-native'
+import PropTypes from 'prop-types'
 
 const IS_ANDROID = Platform.OS === 'android';
 

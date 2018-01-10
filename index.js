@@ -1,13 +1,9 @@
 'use strict';
 
-import React from 'react-native';
-var {
-    View,
-    WebView,
-    PropTypes
-    } = React;
+import React, { Component } from 'react'
+import { View, WebView } from 'react-native'
+import PropTypes from 'prop-types'
 
-import BaseComponent from './BaseComponent'
 import Utils from './Utils'
 import Spinner from 'react-native-loading-spinner-overlay';
 
@@ -43,7 +39,7 @@ const defaultProps = {
     onShouldStartLoadWithRequest: ()=>true,
 }
 
-class Webbrowser extends BaseComponent {
+class Webbrowser extends Component {
 
     constructor(props) {
         super(props);
@@ -69,6 +65,10 @@ class Webbrowser extends BaseComponent {
             'onShouldStartLoadWithRequest',
             'renderToolbar'
         );
+    }
+
+    _bind(...methods) {
+        methods.forEach( (method) => this[method] = this[method].bind(this) );
     }
 
     componentWillReceiveProps(nextProps) {
@@ -124,7 +124,6 @@ class Webbrowser extends BaseComponent {
         return (
             <View style={[styles.container, this.props.backgroundColor && {backgroundColor: this.props.backgroundColor}]}>
                 <View style={styles.header}>
-                    {this.renderAddressBar()}
                     {this.renderStatusBar()}
                 </View>
                 <WebView
@@ -141,7 +140,6 @@ class Webbrowser extends BaseComponent {
                     scalesPageToFit={this.state.scalesPageToFit}
                 />
                 {this.renderToolbar()}
-                <Spinner visible={this.state.loading} />
             </View>
         );
     }
